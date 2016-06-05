@@ -6,7 +6,7 @@
 #include <TimeLib.h>
 #include <DS3232RTC.h>
 
-void setup(){
+void setupTimeUtils(){
   setSyncProvider(RTC.get);   // the function to get the time from the RTC
   if(timeStatus()!= timeSet)
      Serial.println("Unable to sync with the RTC");
