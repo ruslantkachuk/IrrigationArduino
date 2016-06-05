@@ -4,15 +4,13 @@
  * then off for one second, repeatedly.
  */
 #include "Arduino.h"
+#include "TimeUtils.h"
 
-void setup()
-{
-  // initialize LED digital pin as an output.
-  //pinMode(LED_BUILTIN, OUTPUT);
+void setup() {
+  TimeUtils::setupTimeUtils();
 }
 
-void loop()
-{
+void loop() {
   // turn the LED on (HIGH is the voltage level)
   digitalWrite(LED_BUILTIN, HIGH);
   // wait for a second
