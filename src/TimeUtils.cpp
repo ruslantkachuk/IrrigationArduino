@@ -6,6 +6,7 @@
 #include <TimeLib.h>
 #include <DS3232RTC.h>
 #include <TimeUtils.h>
+#include <TimeRange.h>
 
 void TimeUtils::setupTimeUtils() {
   setSyncProvider(RTC.get);   // the function to get the time from the RTC
@@ -14,6 +15,16 @@ void TimeUtils::setupTimeUtils() {
   else
      Serial.println("RTC has set the system time");
 }
+
+boolean TimeUtils::isCurrentTimeInRange(TimeRange timeRange){
+  boolean result = false;
+  unsigned long currentTime = now();
+  if (currentTime > timeRange.getTimeStart() && currentTime < timeRange.getTimeEnd()) {
+    result = true;
+  }
+  return result;
+}
+
 
 void TimeUtils::showCurrentTime(){
   if (timeStatus() == timeSet) {
@@ -48,3 +59,11 @@ void TimeUtils::printDigits(int digits){
     Serial.print('0');
   Serial.print(digits);
 }
+
+// void TimeUtils::printDigits(int digits){
+//   // utility function for digital clock display: prints preceding colon and leading 0
+//   Serial.print(":");
+//   if(digits < 10)
+//     Serial.print('0');
+//   Serial.print(digits);
+// }

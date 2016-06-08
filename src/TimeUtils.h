@@ -2,6 +2,7 @@
 #define TimeUtils_h
 
 #include "Arduino.h"
+#include <TimeRange.h>
 
 class TimeUtils {
   public:
@@ -9,6 +10,7 @@ class TimeUtils {
     static void showCurrentTime();
     static void digitalClockDisplay();
     static void printDigits(int);
+    static boolean isCurrentTimeInRange(TimeRange timeRange);
 };
 
 #endif
